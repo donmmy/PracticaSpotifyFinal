@@ -1,0 +1,6 @@
+spotify-taste-mixer/.git_backup/
+spotify-taste-mixer/.next/
+spotify-taste-mixer/node_modules/
+spotify-taste-mixer/.env.local
+.DS_Store
+Thumbs.db

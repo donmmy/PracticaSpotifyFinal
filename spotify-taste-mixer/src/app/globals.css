@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --background: #040405;
+  --foreground: #f4f4f5;
+  --spotify-green: #1db954;
+  --spotify-green-hover: #1ed760;
+  --card-bg: rgba(18, 18, 18, 0.7);
+  --border-color: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-spotify: var(--spotify-green);
+  --color-spotify-hover: var(--spotify-green-hover);
+  --font-sans: var(--font-geist-sans), Inter, system-ui, sans-serif;
+}
+
+html, body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism card utility */
+.glass {
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(28, 28, 28, 0.8);
+  border-color: rgba(29, 185, 84, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(29, 185, 84, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Spotify gradient background elements */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 10% 20%, rgba(29, 185, 84, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.9) 0%, transparent 50%),
+              #050506;
+  pointer-events: none;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Pulse / Animation utilities */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .8;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #27272a;
+  height: 6px;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px; /* Centers the thumb on the track */
+  background-color: var(--spotify-green);
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  transition: background-color 0.15s ease;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background-color: var(--spotify-green-hover);
+  box-shadow: 0 0 8px var(--spotify-green);
+}
